@@ -10,15 +10,18 @@ class Note_book:
     def get_id(self):
         return int(self.__id_number)
     
+    def get_note(self, id):
+        return self.__notes.get(id)
+    
+    def get_name(self):
+        return self.__notes.get('name')
+    
     def plus_id(self):
         self.__id_number += 1
     
     def new_notes(self, note):
         self.__notes[self.__id_number] = note
         
-    def get_note(self, id):
-        return self.__notes.get(id)
-    
     def get_all_notes(self):
         list_note = []
         for i in range(len(self.__notes)-1):
