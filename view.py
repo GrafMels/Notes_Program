@@ -24,6 +24,11 @@ class View:
         os.system('CLS')
         function_selection = input("Выберете команду и введите соответсвующую цифру:\n1. Добавить новую книгу заметок\n2. Сохранить всё\n3. Открыть книгу\n0. Выход\n")
         return function_selection
+    
+    def function_selection_in_book():
+        os.system('CLS')
+        function_selection = input("Выберете команду и введите соответсвующую цифру:\n1. Добавить заметку\n2. Сохранить всё\n3. Открыть заметку\n4. Отедактировать заметку\n5. Удалить заметку\n0. Выход\n")
+        return function_selection
      
     def wrong_input(string):
         os.system('CLS')
