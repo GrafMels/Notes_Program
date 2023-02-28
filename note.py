@@ -23,14 +23,15 @@ class Note:
         self.__creation_Time = creation_Time
         self.__book_name = book_name
 
-    def set_new_note(self, name, head, body):
+    def set_new_note(self, name, head, body, book_name):
         self.__name = name
-        self.__body = body
-        self.__head = head
-        self.__creation_Time = time_manager.get_now_time()
-        self.__creation_Date = time_manager.get_now_date()
-        self.__changed_Date = "Не_изменялся"
-        self.__changed_Time = "Не_изменялся"
+        self.__body = "\"{0}\"".format(body)
+        self.__head = "\"{0}\"".format(head)
+        self.__creation_Time = "\"{0}\"".format(time_manager.get_now_time())
+        self.__creation_Date = "\"{0}\"".format(time_manager.get_now_date())
+        self.__changed_Date = "\"{0}\"".format("Не_изменялся")
+        self.__changed_Time = "\"{0}\"".format("Не_изменялся")
+        self.__book_name = book_name
         
     def set_name(self, name):
         self.__name = name
@@ -48,10 +49,16 @@ class Note:
         self.__changed_Time = time_manager.get_now_time()
         self.__changed_Date = time_manager.get_now_date()
         self.__body = body
+        
+    def set_body_without(self, body):
+        self.__body = body
 
     def get_body(self):
         return self.__body
 
+    def set_head_without(self, head):
+        self.__head = head
+        
     def set_head(self, head):
         self.__changed_Time = time_manager.get_now_time()
         self.__changed_Date = time_manager.get_now_date()
@@ -68,6 +75,9 @@ class Note:
 
     def __str__(self):
         return str("{{\n\"id\": \"{0}\",\n\"body\": \"{1}\",\n\"head\": \"{2}\",\n\"date of creation\": \"{3}\",\n\"time of creation\": \"{4}\",\n\"date of change\": \"{5}\",\n\"time of change\": \"{6}\",\n\"book name\": \"{7}\"\n}}".format(self.__id, self.__body, self.__head, self.__creation_Date, self.__creation_Time, self.__changed_Date, self.__changed_Time, self.__book_name))
+    
+    def toString(self):
+        return str("{{\n\"id\": {0},\n\"body\": {1},\n\"head\": {2},\n\"date of creation\": {3},\n\"time of creation\": {4},\n\"date of change\": {5},\n\"time of change\": {6},\n\"book name\": \"{7}\"\n}}".format(self.__id, self.__body, self.__head, self.__creation_Date, self.__creation_Time, self.__changed_Date, self.__changed_Time, self.__book_name))
     
     def return_deleted(self):
         return str("{0} {1} {2} {3} {4} {5} {6} {7}".format(self.__id, self.__body, self.__head, self.__creation_Date, self.__creation_Time, self.__changed_Date, self.__changed_Time, self.__book_name))

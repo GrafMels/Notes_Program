@@ -13,6 +13,9 @@ class Note_book:
     def get_note(self, id):
         return self.__notes.get(id)
     
+    def set_note(self, id, note):
+        self.__notes[id] = note
+    
     def get_name(self):
         return self.__notes.get('name')
     

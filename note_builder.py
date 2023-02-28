@@ -1,19 +1,19 @@
+import copy
+import time
 from note import Note
 
 
 class Note_builder:
     
-    def build_new_note(self, name, head, body):
+    def build_new_note(self, name, head, body, book_name):
         new_note = Note()
-        new_note.set_new_note(name, head, body)
+        new_note.set_new_note(name, head, body, book_name)
         return new_note
     
-    def edit_note(self, note, name, head, body):
-        new_note = Note()
-        new_note.set_old_note(note)
-        new_note = note
-        new_note.set_new_note(name, head, body)
-        return new_note
+    def edit_note(self, note, head, body):
+        note.set_head_without(head)
+        note.set_body_without(body)
+        return note
     
     def read_str_to_note(string, filename):
         info_list = []
