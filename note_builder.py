@@ -3,9 +3,17 @@ from note import Note
 
 class Note_builder:
     
-    def build_new_note(name, id, body, head, book_name):
+    def build_new_note(self, name, head, body):
         new_note = Note()
-        new_note.set_new_note(name, id, body, head, book_name)
+        new_note.set_new_note(name, head, body)
+        return new_note
+    
+    def edit_note(self, note, name, head, body):
+        new_note = Note()
+        new_note.set_old_note(note)
+        new_note = note
+        new_note.set_new_note(name, head, body)
+        return new_note
     
     def read_str_to_note(string, filename):
         info_list = []

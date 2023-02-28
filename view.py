@@ -28,7 +28,7 @@ class View:
     def function_selection_in_book():
         os.system('CLS')
         function_selection = input("Выберете команду и введите соответсвующую цифру:\n1. Добавить заметку\n2. Сохранить всё\n3. Открыть заметку\n4. Отедактировать заметку\n5. Удалить заметку\n0. Выход\n")
-        return function_selection
+        return str(function_selection)
      
     def wrong_input(string):
         os.system('CLS')
@@ -46,6 +46,69 @@ class View:
                 os.mkdir("notes_books/{0}".format(book[0]))
             for note in book[1].get_all_notes():
                 if not os.path.exists("notes_books/{0}/{1}.json".format(book[0], note.get_name())):
-                    new_note = open("notes_books/{0}/{1}.json".format(book[0], note.get_name()), "w")
+                    new_note = open("notes_books/{0}/{1}.json".format(book[0], note.get_name()), "w", encoding='utf-8')
                     new_note.write(str(note))
                     new_note.close()
+    
+    def note_builder_add():
+        list_answer = []
+        os.system('CLS')
+        list_answer.append(input("Придумайте имя записки: "))
+        list_answer.append(input("Придумайте оглавление записки: "))
+        list_answer.append(input("Введите текст записки: "))
+        return list_answer
+    
+    def choice_book(book_list):
+        output_list = []
+        os.system('CLS')
+        print("Выберете книгу и введите соответсвующую цифру:")
+        i=0
+        list = []
+        for book in book_list:
+            list.append(i)
+            i += 1
+            print("{0}. {1}".format(i, book[0]))
+        list.append(i)
+        print("0. Назад")
+        book_selection = input(": ")
+        output_list.append(list)
+        output_list.append(book_selection)
+        output_list.append(i)
+        return output_list
+    
+    def choice_note(book):
+        output_list = []
+        os.system('CLS')
+        print("Выберете записку и введите соответсвующую цифру:")
+        i=0
+        list = []
+        for note in book.get_all_notes():
+            list.append(i)
+            i += 1
+            print("{0}. {1}".format(i, note.get_name()))
+        list.append(i)
+        print("0. Назад")
+        note_selection = input()
+        output_list.append(list)
+        output_list.append(note_selection)
+        output_list.append(i)
+        return output_list
+
+    def show_note(note):
+        os.system('CLS')
+        print(str(note))
+        print()
+        wait = input("Введите любой символ для продолжения: ")
+        
+    def edit_note(note):
+        list_answer = []
+        os.system('CLS')
+        list_answer.append(input("Придумайте новое имя записки: "))
+        list_answer.append(input("Придумайте новое оглавление записки: "))
+        list_answer.append(input("Введите новый текст записки: "))
+        note_builder = Note_builder()
+        note_builder.edit_note(note, list_answer[0], list_answer[1], list_answer[2])
+        return note
+        
+            
+    

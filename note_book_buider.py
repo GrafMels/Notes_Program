@@ -14,3 +14,8 @@ class Note_book_builder:
     
     def build_note_book(self):
         return self.note_book
+    
+    def change_book(self, book):
+        self.note_book = book
+        
+        
