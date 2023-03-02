@@ -1,4 +1,4 @@
-import time_manager
+import additional_functionality.time_manager as time_manager
 
 
 class Note:

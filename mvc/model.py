@@ -2,9 +2,9 @@ import cmd
 import os
 import sys
 import time
-from note_book_buider import Note_book_builder
-from note_builder import Note_builder
-from view import View
+from note_object.note_book_buider import Note_book_builder
+from note_object.note_builder import Note_builder
+from mvc.view import View
 
 
 class Model:

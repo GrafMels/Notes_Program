@@ -1,8 +1,8 @@
 import os
 import shutil
 import time
-from note_book_buider import Note_book_builder
-from note_builder import Note_builder
+from note_object.note_book_buider import Note_book_builder
+from note_object.note_builder import Note_builder
 
 
 

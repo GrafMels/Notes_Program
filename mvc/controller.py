@@ -1,5 +1,5 @@
-from model import Model
-from view import View
+from mvc.model import Model
+from mvc.view import View
 
 
 class Controller:

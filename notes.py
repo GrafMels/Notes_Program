@@ -1,3 +1,3 @@
-from controller import Controller
+from mvc.controller import Controller
 
 Controller.start()

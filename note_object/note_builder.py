@@ -1,4 +1,4 @@
-from note import Note
+from note_object.note import Note
 
 
 class Note_builder:

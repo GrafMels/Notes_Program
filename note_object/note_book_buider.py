@@ -1,4 +1,4 @@
-from note_book import Note_book
+from note_object.note_book import Note_book
 note_book = Note_book("404")
 
 class Note_book_builder:
