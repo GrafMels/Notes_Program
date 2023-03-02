@@ -74,11 +74,10 @@ class View:
         list.append(i)
         print("0. Назад")
         book_selection = input(": ")
-        if bool == True:
-            output_list.append(list)
-            output_list.append(book_selection)
-            output_list.append(i)
-        elif bool == False:
+        output_list.append(list)
+        output_list.append(book_selection)
+        output_list.append(i)
+        if bool == False:
             shutil.rmtree("notes_books/{0}".format(book_list[int(book_selection)-1][0]))
         return output_list
     

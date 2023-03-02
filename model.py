@@ -1,3 +1,4 @@
+import time
 from note import Note
 from note_book_buider import Note_book_builder
 from note_builder import Note_builder
@@ -26,6 +27,7 @@ class Model:
             return False
 
         elif function_selection == "3":
+            
             bool_choice = False
             while bool_choice == False:
                 bool_choice = self.repeating_books_choice()
@@ -34,6 +36,9 @@ class Model:
         elif function_selection == "4":
             print("ВНИМАНИЕ")
             input_list = View.choice_book(self.book_list, False)
+            del self.book_list[[int(input_list[1])-1][0]]
+            print(self.book_list)
+            time.sleep(4)
             return False
         
         elif function_selection == "0":
