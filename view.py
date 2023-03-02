@@ -1,4 +1,5 @@
 import os
+import shutil
 import time
 from note_book_buider import Note_book_builder
 from note_book import Note_book
@@ -22,7 +23,7 @@ class View:
     
     def function_selection():
         os.system('CLS')
-        function_selection = input("Выберете команду и введите соответсвующую цифру:\n1. Добавить новую книгу заметок\n2. Сохранить всё\n3. Открыть книгу\n0. Выход\n")
+        function_selection = input("Выберете команду и введите соответсвующую цифру:\n1. Добавить новую книгу заметок\n2. Сохранить всё\n3. Открыть книгу\n4. Удалить книгу\n0. Выход\n")
         return function_selection
     
     def function_selection_in_book():
@@ -57,10 +58,13 @@ class View:
         list_answer.append(input("Введите текст записки: "))
         return list_answer
     
-    def choice_book(book_list):
+    def choice_book(book_list, bool):
         output_list = []
         os.system('CLS')
-        print("Выберете книгу и введите соответсвующую цифру:")
+        if bool == True:
+            print("Выберете книгу и введите соответсвующую цифру:")
+        elif bool == False:
+            print("ВНИМАНИЕ!!! Книга удаляется вместе с заметками!\nВыберете книгу и введите соответсвующую цифру:")
         i=0
         list = []
         for book in book_list:
@@ -70,9 +74,12 @@ class View:
         list.append(i)
         print("0. Назад")
         book_selection = input(": ")
-        output_list.append(list)
-        output_list.append(book_selection)
-        output_list.append(i)
+        if bool == True:
+            output_list.append(list)
+            output_list.append(book_selection)
+            output_list.append(i)
+        elif bool == False:
+            shutil.rmtree("notes_books/{0}".format(book_list[int(book_selection)-1][0]))
         return output_list
     
     def choice_note(book):
