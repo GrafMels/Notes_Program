@@ -2,9 +2,8 @@ import os
 import shutil
 import time
 from note_book_buider import Note_book_builder
-from note_book import Note_book
 from note_builder import Note_builder
-from note import Note
+
 
 
 class View:
@@ -23,12 +22,12 @@ class View:
     
     def function_selection():
         os.system('CLS')
-        function_selection = input("Выберете команду и введите соответсвующую цифру:\n1. Добавить новую книгу заметок\n2. Сохранить всё\n3. Открыть книгу\n4. Удалить книгу\n0. Выход\n")
+        function_selection = input("Выберете команду и введите соответсвующую цифру:\n1. Добавить новую книгу заметок\n2. Сохранить всё\n3. Открыть книгу\n4. Удалить книгу\n0. Выход\n: ")
         return function_selection
     
     def function_selection_in_book():
         os.system('CLS')
-        function_selection = input("Выберете команду и введите соответсвующую цифру:\n1. Добавить заметку\n2. Сохранить всё\n3. Открыть заметку\n4. Отедактировать заметку\n6. Переименовать заметку\n5. Удалить заметку\n0. Выход\n")
+        function_selection = input("Выберете команду и введите соответсвующую цифру:\n1. Добавить заметку\n2. Сохранить всё\n3. Открыть заметку\n4. Отедактировать заметку\n5. Переименовать заметку\n6. Удалить заметку\n0. Назад\n: ")
         return str(function_selection)
      
     def wrong_input(string):
@@ -53,9 +52,9 @@ class View:
     def note_builder_add():
         list_answer = []
         os.system('CLS')
-        list_answer.append(input("Придумайте имя записки: "))
-        list_answer.append(input("Придумайте оглавление записки: "))
-        list_answer.append(input("Введите текст записки: "))
+        list_answer.append(input("Придумайте имя заметки: "))
+        list_answer.append(input("Придумайте оглавление заметки: "))
+        list_answer.append(input("Введите текст заметки: "))
         return list_answer
     
     def choice_book(book_list, bool):
@@ -84,7 +83,7 @@ class View:
     def choice_note(book):
         output_list = []
         os.system('CLS')
-        print("Выберете записку и введите соответсвующую цифру:")
+        print("Выберете заметку и введите соответсвующую цифру:")
         i=0
         list = []
         for note in book.get_all_notes():
@@ -93,7 +92,7 @@ class View:
             print("{0}. {1}".format(i, note.get_name()))
         list.append(i)
         print("0. Назад")
-        note_selection = input()
+        note_selection = input(": ")
         output_list.append(list)
         output_list.append(note_selection)
         output_list.append(i)
@@ -108,11 +107,16 @@ class View:
     def edit_note(note):
         list_answer = []
         os.system('CLS')
-        list_answer.append("\"{0}\"".format(input("Придумайте новое оглавление записки: ")))
-        list_answer.append("\"{0}\"".format(input("Введите новый текст записки: ")))
+        list_answer.append("\"{0}\"".format(input("Придумайте новое оглавление заметки: ")))
+        list_answer.append("\"{0}\"".format(input("Введите новый текст заметки: ")))
         note_builder = Note_builder()
         note_builder.edit_note(note, list_answer[0], list_answer[1])
         return note
+
+    def delete_note(book, note):
+        os.remove("notes_books/{0}/{1}.json".format(book, note))
         
-            
-    
+    def set_name():
+        os.system('CLS')
+        return input("Введите новое имя заметки: ")
+        

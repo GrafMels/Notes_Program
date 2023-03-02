@@ -1,5 +1,3 @@
-import numpy as np
-
 class Note_book:
     __notes = dict(name = '404')
     __id_number = 0
@@ -16,6 +14,9 @@ class Note_book:
     def set_note(self, id, note):
         self.__notes[id] = note
     
+    def delete_note(self, id):
+        self.__notes.pop(id)
+    
     def get_name(self):
         return self.__notes.get('name')
     
@@ -27,8 +28,10 @@ class Note_book:
         
     def get_all_notes(self):
         list_note = []
+        
         for i in range(len(self.__notes)-1):
             list_note.append(self.__notes.get(i))
+            
         return list_note
         
     def __str__(self):
@@ -36,4 +39,5 @@ class Note_book:
         for key,item in self.__notes.items():
             strings.append("\n{}: {}\n".format(key, item))
         result = "\n".join(strings)
+        
         return result
